@@ -1,6 +1,7 @@
 import sys 
 import math
 import numpy as np
+import argparse
 
 # angles in degrees
 # heights/distance in meters
@@ -43,7 +44,16 @@ def new_waypoint(x, y, target_height):
 
 def main ():
 
-    while(True):
+    parser = argparse.ArgumentParser(description='Calculate new waypoint')
+    parser.add_argument('x', type=int, help='X coordinate of the current waypoint')
+    parser.add_argument('y', type=int, help='Y coordinate of the current waypoint')
+    parser.add_argument('target_height', type=int, help='Target height of the drone')
+    args = parser.parse_args()
+    new_x, new_y = new_waypoint(args.x, args.y, args.target_height)
+    print(f"New waypoint: ({new_x}, {new_y})")
+    return new_x, new_y
+
+    while(False):
         print("Providing new waypoint............")
         x = input("X:  ")
         y = input("Y:  ")

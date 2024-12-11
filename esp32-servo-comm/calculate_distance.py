@@ -4,7 +4,7 @@ import numpy as np
 
 # angles in degrees
 # heights/distance in meters
-def calculate_distance_straight_line(launcher_height, target_height, launcher_angle, rover_angle):
+def calculate_distance_straight_line(target_height, launcher_angle=60, rover_angle=0, launcher_height=1/3):
 
     effective_angle = launcher_angle + rover_angle
     tan_angle = math.tan(math.radians(effective_angle))
@@ -17,7 +17,7 @@ def calculate_distance_straight_line(launcher_height, target_height, launcher_an
 
     return distance
 
-def calculate_distance_curve(launcher_height, target_height, launcher_angle, rover_angle, speed_const, drag_const):
+def calculate_distance_curve(target_height, speed_const, drag_const, launcher_height=1/3, launcher_angle=60, rover_angle=0):
 
     effective_angle = launcher_angle + rover_angle
     effective_angle_rad = math.radians(effective_angle)
@@ -28,6 +28,17 @@ def calculate_distance_curve(launcher_height, target_height, launcher_angle, rov
     distance = (drag_const * cos_angle) * (math.asinh((target_height - launcher_height + (drag_const * sin_angle))/(speed_const)))
 
     return distance
+
+def new_waypoint(x, y, target_height):
+
+    r = math.sqrt(x**2 + y**2)
+    offset = calculate_distance_straight_line(target_height)
+    new_x = x * (r - offset) / r
+    new_y = y * (r - offset) / r
+
+    return new_x, new_y
+
+
 
 def main ():
 

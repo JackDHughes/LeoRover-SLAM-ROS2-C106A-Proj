@@ -29,6 +29,8 @@ def calculate_distance_curve(target_height, speed_const, drag_const, launcher_he
 
     return distance
 
+# x, y are the coordinates of the current waypoint 
+# Fucntion returns a new waypoint for targeting of the drone
 def new_waypoint(x, y, target_height):
 
     r = math.sqrt(x**2 + y**2)
@@ -39,12 +41,14 @@ def new_waypoint(x, y, target_height):
     return new_x, new_y
 
 
-
 def main ():
 
-    print("Test calculate_distance.py")
-    test_calculate_distance_straight_line()
-    test_calculate_distance_curve()
+    print("Providing new waypoint............")
+    x = input("X:  ")
+    y = input("Y:  ")
+    drone_height = input("Drone Height:  ")
+    new_x, new_y = new_waypoint(int(x), int(y), int(drone_height))
+    print(f"New waypoint: ({new_x}, {new_y})")
 
 def test_calculate_distance_straight_line():
     # Test case 1

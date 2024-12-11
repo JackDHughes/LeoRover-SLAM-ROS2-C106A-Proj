@@ -50,8 +50,7 @@ def main ():
     parser.add_argument('target_height', type=int, help='Target height of the drone')
     args = parser.parse_args()
     new_x, new_y = new_waypoint(args.x, args.y, args.target_height)
-    print(f"New waypoint: ({new_x}, {new_y})")
-    return new_x, new_y
+    print(new_x,"\n",new_y)
 
     while(False):
         print("Providing new waypoint............")

@@ -43,12 +43,13 @@ def new_waypoint(x, y, target_height):
 
 def main ():
 
-    print("Providing new waypoint............")
-    x = input("X:  ")
-    y = input("Y:  ")
-    drone_height = input("Drone Height:  ")
-    new_x, new_y = new_waypoint(int(x), int(y), int(drone_height))
-    print(f"New waypoint: ({new_x}, {new_y})")
+    while(True):
+        print("Providing new waypoint............")
+        x = input("X:  ")
+        y = input("Y:  ")
+        drone_height = input("Drone Height:  ")
+        new_x, new_y = new_waypoint(int(x), int(y), int(drone_height))
+        print(f"New waypoint: ({new_x}, {new_y})")
 
 def test_calculate_distance_straight_line():
     # Test case 1
